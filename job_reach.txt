@@ -1,0 +1,35 @@
+Role & Task:
+
+Act as a Senior Full-Stack & Automation Engineer. I want to design and build an automated system that scouts relevant entry-level job opportunities and handles cold outreach to hiring managers.
+
+Project Specifications:
+
+Job Scraping & Filtering:
+
+Platforms: Naukri.com and LinkedIn.
+
+Target Roles: AI Engineer, Data Scientist, Software Developer, and Backend Engineer.
+
+Experience Requirement Filter: Strictly target entry-level positions requiring 0–2 years of experience. Include listings marked 1–3 years as valid edge cases. Exclude any roles requiring >3 years of experience.
+
+Lead Enrichment & Decision Maker Discovery:
+
+For each valid job posting, identify the key contact (e.g., Hiring Manager, Recruiter, Engineering Manager, or Talent Acquisition Specialist).
+
+Discover/enrich the lead's professional business email address (e.g., using email lookup tools, patterns, or professional contact databases).
+
+Automated Outreach:
+
+Draft customized, professional cold outreach emails tailored to the specific role and company context.
+
+Set up an automated mailing pipeline to send outreach emails directly to the identified decision-makers.
+
+Instructions for the Output:
+
+Outline the recommended technical stack (e.g., Python, Playwright/Selenium, BeautifulSoup, Hunter.io/Apollo APIs, SMTP/Gmail API).
+
+Provide a modular architectural design for the system.
+
+Provide clean, well-commented Python code for the main modules (Scraper/Filter, Email Enrichment, and Mail Dispatcher).
+
+Include rate-limiting, error-handling, and anti-scraping/anti-spam best practices.

@@ -1,0 +1,37 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+credentials.json
+token.json
+client_secret*.json
+
+# Databases & Local State
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+data/*.db
+
+# Python Bytecode & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Playwright & Logs
+playwright-report/
+test-results/
+logs/
+*.log

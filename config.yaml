@@ -1,0 +1,154 @@
+# ============================================================================
+# Job-Reach Master Configuration (config.yaml)
+# ============================================================================
+
+candidate:
+  name: "Alex Rivera"
+  title: "Entry-Level Software & AI Engineer"
+  email: "alex.rivera@example.com"
+  portfolio_url: "https://github.com/alexrivera"
+  linkedin_url: "https://www.linkedin.com/in/alexrivera"
+  resume_path: ""
+  highlights:
+    ai_engineer: "built production RAG & LLM agent pipelines using PyTorch, FastAPI, and vector search"
+    data_scientist: "delivered end-to-end predictive ML models, feature pipelines, and statistical experimentation in Python/SQL"
+    software_developer: "shipped full-stack web services, modular APIs, and automated test suites with clean architecture"
+    backend_engineer: "designed low-latency microservices, PostgreSQL/Redis data layers, and resilient async workers"
+
+scraping:
+  platforms:
+    - "naukri"
+    - "linkedin"
+  locations:
+    - "Bangalore"
+    - "Hyderabad"
+    - "Pune"
+    - "Mumbai"
+    - "Remote"
+  max_pages_per_role: 2
+  headless: true
+  request_delay_min_sec: 2.0
+  request_delay_max_sec: 5.0
+
+  target_roles:
+    - role_key: "ai_engineer"
+      display_name: "AI Engineer"
+      keywords:
+        - "AI Engineer"
+        - "Machine Learning Engineer"
+        - "GenAI Engineer"
+        - "LLM Engineer"
+      core_skills:
+        - "Python"
+        - "PyTorch"
+        - "LLMs"
+        - "RAG"
+        - "FastAPI"
+
+    - role_key: "data_scientist"
+      display_name: "Data Scientist"
+      keywords:
+        - "Data Scientist"
+        - "Junior Data Scientist"
+        - "Associate Data Scientist"
+      core_skills:
+        - "Python"
+        - "Scikit-Learn"
+        - "SQL"
+        - "Statistics"
+        - "Pandas"
+
+    - role_key: "software_developer"
+      display_name: "Software Developer"
+      keywords:
+        - "Software Developer"
+        - "Software Engineer"
+        - "SDE 1"
+        - "SDE-I"
+        - "Associate Software Engineer"
+      core_skills:
+        - "Python"
+        - "Java"
+        - "TypeScript"
+        - "REST APIs"
+        - "Git"
+
+    - role_key: "backend_engineer"
+      display_name: "Backend Engineer"
+      keywords:
+        - "Backend Engineer"
+        - "Backend Developer"
+        - "Python Backend Engineer"
+      core_skills:
+        - "Python"
+        - "FastAPI"
+        - "PostgreSQL"
+        - "Redis"
+        - "Docker"
+
+filtering:
+  # Strictly target 0-2 years (PRIMARY). Include 1-3 / 0-3 years as valid edge cases (EDGE_CASE).
+  # Exclude any role requiring >3 years of experience or min_years >= 3.
+  primary_max_years: 2
+  edge_case_max_years: 3
+  allow_edge_cases: true
+  allow_unlisted_if_entry_level: true
+
+  # Immediate rejection if any of these tokens appear in title or seniority badge
+  excluded_senior_title_tokens:
+    - "senior"
+    - "sr."
+    - "sr"
+    - "lead"
+    - "principal"
+    - "staff"
+    - "architect"
+    - "manager"
+    - "director"
+    - "head"
+    - "vp"
+    - "vice president"
+    - "chief"
+    - "sde-iii"
+    - "sde 3"
+    - "sde3"
+    - "sde-3"
+
+  excluded_seniority_badges:
+    - "mid-senior level"
+    - "director"
+    - "executive"
+
+enrichment:
+  # Both Apollo.io and Hunter.io remain configured.
+  # Primary provider is tried first; automatic failover switches to secondary
+  # when free-tier credits are exhausted or HTTP 429 rate-limit is hit.
+  provider_priority:
+    - "apollo"
+    - "hunter"
+  enable_cross_provider_handoff: true
+  enable_pattern_mx_fallback: true
+  verify_hunter_emails: false
+
+  # Default free-tier monthly credit ceilings (used to seed SQLite quota ledger)
+  apollo_monthly_free_limit: 50
+  hunter_monthly_free_limit: 25
+
+  decision_maker_titles:
+    - "Technical Recruiter"
+    - "Talent Acquisition"
+    - "Engineering Manager"
+    - "Hiring Manager"
+    - "Head of Talent"
+    - "HR Manager"
+    - "Founder"
+    - "CTO"
+
+outreach:
+  transport: "smtp"           # "smtp" (Gmail App Password) or "gmail_oauth"
+  dry_run_default: true
+  daily_send_cap: 25
+  dedup_window_days: 30
+  min_jitter_seconds: 45
+  max_jitter_seconds: 120
+  enable_llm_hook: false
